@@ -1,4 +1,4 @@
-import { app } from './app.js';
+const app = require('./app.js');
 
 // Server port
 const port = process.env.PORT || 3000;

@@ -24,4 +24,4 @@ app.all('*', (req, res) => {
 });
 
 app.use(compression());
-module.exports = app;
+// module.exports = app;
