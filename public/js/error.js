@@ -1,6 +1,6 @@
 const error = document.querySelector('.error');
 
-error.insertAdjacentHTML('beforeend', `<h4 class="redirect">Redirecting to <a class="link" href='#'>Site Name</a> in <span class='timerClass'></span> seconds...</h4>`);
+error.insertAdjacentHTML('beforeend', `<h4 class="redirect">Redirecting to <a class="link" href='https://findcovid.herokuapp.com/'>Covid-19 Tracker</a> in <span class='timerClass'></span> seconds...</h4>`);
 
 const timerClass = document.querySelector('.timerClass');
 
