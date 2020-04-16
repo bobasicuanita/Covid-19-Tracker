@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const router = express.Router();
+const compression = require('compression');
 
 // Log req status and time
 app.use(morgan('dev'));
@@ -18,8 +19,9 @@ router.get('/', (req, res) => {
 app.all('*', (req, res) => {
     res.status(404).sendFile(__dirname + '/public/error.html', {
         title: 'Something went wrong!',
-        msg: `Cannot find ${req.originalUrl} in this server`
+        msg: `Cannot find ${req.originalUrl} in this server`,
     });
 });
 
+app.use(compression());
 module.exports = app;
