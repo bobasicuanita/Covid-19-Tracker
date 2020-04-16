@@ -1,104 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Covid-19 Global Map Tracker
+        </title>
+        <!-- <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.css"> -->
+        <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+        <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        Covid-19 Global Map Tracker
-    </title>
-    <!-- <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.css"> -->
-    <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
-    <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon" />
-</head>
-
-<body>
-    <div class="alert"></div>
-    <div class="container">
-        <div class="dashboard">
-            <h5 class="title">Covid-19 Tracker</h5>
-            <div class="input">
-                <form>
-                    <label for="search">Search Covid-19 by country name.</label>
-                    <input type="text" name="search" id="search" class="search-input" placeholder="Country"
-                        autocomplete="off" />
-                    <i class="fa fa-flag" aria-hidden="true"></i>
-                    <button class="btn" type="submit">Search</button>
-                </form>
+    <body>
+        <div class="alert"></div>
+        <div class="container">
+            <div class="dashboard">
+                <h5 class="title">Covid-19 Tracker</h5>
+                <div class="input">
+                    <form>
+                        <label for="search">Search Covid-19 by country name.</label>
+                        <input
+                            type="text"
+                            name="search"
+                            id="search"
+                            class="search-input"
+                            placeholder="Country"
+                            autocomplete="off"
+                        />
+                        <i class="fa fa-flag" aria-hidden="true"></i>
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="data-container">
+                    <ul class="data-list">
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-clock positive" id="fontawesome"></i>
+                            <span class="date"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-virus negative" id="fontawesome"></i>Total Cases:
+                            <span class="totalcases"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-viruses negative" id="fontawesome"></i>New Cases:
+                            <span class="todaycases"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-dizzy negative" id="fontawesome"></i>Total Deaths:
+                            <span class="totaldeaths"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-dizzy negative" id="fontawesome"></i>Today's Deaths:
+                            <span class="todaydeaths"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-walking positive" id="fontawesome"></i>Recovered:
+                            <span class="recovered"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-hospital-user negative" id="fontawesome"></i>Active cases:
+                            <span class="active"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-head-side-mask negative" id="fontawesome"></i>Critical:
+                            <span class="critical"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-syringe positive" id="fontawesome"></i>Tests:
+                            <span class="tests"></span>
+                        </li>
+                        <li class="data-item">
+                            <i class="fas fa-lg fa-globe negative" id="fontawesome"></i>Affected countries:
+                            <span class="affected"></span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="footerOne">
+                    &copy; 2020
+                    <a class="link" href="https://konstantinoskarasavvas.herokuapp.com/" target="_blank"
+                        >Karasavvas Konstantinos</a
+                    >
+                </p>
+                <p class="footerTwo">
+                    Covid-19 data from
+                    <a
+                        href="https://documenter.getpostman.com/view/8854915/SzS7R6uu?version=latest#e06bbf79-c150-4851-8a42-6a7faafa0f7e"
+                        class="link"
+                        target="_blank"
+                        >NovelCOVID API</a
+                    >
+                </p>
+                <p class="footerThree">
+                    Map data from
+                    <a href="https://www.naturalearthdata.com/" class="link" target="_blank">Natural Earth</a>
+                </p>
             </div>
-            <div class="data-container">
-                <ul class="data-list">
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-clock positive" id="fontawesome"></i>
-                        <span class="date"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-virus negative" id="fontawesome"></i>Total Cases:
-                        <span class="totalcases"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-viruses negative" id="fontawesome"></i>New Cases:
-                        <span class="todaycases"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-dizzy negative" id="fontawesome"></i>Total Deaths:
-                        <span class="totaldeaths"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-dizzy negative" id="fontawesome"></i>Today's Deaths:
-                        <span class="todaydeaths"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-walking positive" id="fontawesome"></i>Recovered:
-                        <span class="recovered"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-hospital-user negative" id="fontawesome"></i>Active cases:
-                        <span class="active"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-head-side-mask negative" id="fontawesome"></i>Critical:
-                        <span class="critical"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-syringe positive" id="fontawesome"></i>Tests:
-                        <span class="tests"></span>
-                    </li>
-                    <li class="data-item">
-                        <i class="fas fa-lg fa-globe negative" id="fontawesome"></i>Affected countries:
-                        <span class="affected"></span>
-                    </li>
-                </ul>
+            <div id="map"></div>
+            <canvas id="barChart"></canvas>
+            <div class="area">
+                <h3 class="guide">Click on the map to display a Country's Data</h3>
             </div>
-            <p class="footerOne">
-                &copy; 2020
-                <a class="link" href="https://konstantinoskarasavvas.herokuapp.com/" target="_blank">Karasavvas
-                    Konstantinos</a>
-            </p>
-            <p class="footerTwo">
-                Covid-19 data from
-                <a href="https://documenter.getpostman.com/view/8854915/SzS7R6uu?version=latest#e06bbf79-c150-4851-8a42-6a7faafa0f7e"
-                    class="link" target="_blank">NovelCOVID API</a>
-            </p>
-            <p class="footerThree">
-                Map data from
-                <a href="https://www.naturalearthdata.com/" class="link" target="_blank">Natural Earth</a>
-            </p>
+            <canvas id="lineChart"></canvas>
         </div>
-        <div id="map"></div>
-        <canvas id="barChart"></canvas>
-        <div class="area">
-            <h3 class="guide">Click on the map to display a Country's Data</h3>
-        </div>
-        <canvas id="lineChart"></canvas>
-    </div>
-    <script src="js/bundle.js"></script>
-</body>
-
+        <script src="js/bundle.js"></script>
+    </body>
 </html>
