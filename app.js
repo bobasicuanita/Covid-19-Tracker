@@ -3,7 +3,6 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const router = express.Router();
-const compression = require('compression');
 
 // Log req status and time
 app.use(morgan('dev'));
@@ -23,12 +22,5 @@ app.all('*', (req, res) => {
     });
 });
 
-app.use(compression());
-
-// Server port
-const port = process.env.PORT || 3000;
-
-// Server
-const server = app.listen(port, () => {
-    console.log(`Server is listening on port ${port}...`);
-});
+// app.use(compression());
+module.exports = app;
