@@ -1,0 +1,653 @@
+body {
+    background-color: #c8c8c8;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    position: relative;
+    font-weight: 400;
+}
+
+.alert {
+    background-color: rgba(202, 11, 0, 0.6);
+    border-radius: 5px;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.errortext {
+    cursor: default;
+}
+
+.dashboard {
+    background-color: #c8c8c8;
+    height: 100vh;
+    width: 21%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.title {
+    color: #222;
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.input {
+    position: relative;
+}
+
+.input i {
+    color: #222;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    padding: 7px 9px 9px 40px;
+}
+
+.search-input {
+    background-color: #c8c8c8;
+    margin: 30px 0;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #383838;
+    padding-left: 40px;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1em 2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #4267b2;
+    border: none;
+    box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+    text-align: center;
+    position: relative;
+    outline: none;
+}
+
+.btn:active {
+    top: 0.2em;
+}
+
+.data-list {
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 50px 0 30px 20px;
+    width: 85%;
+    list-style: none;
+    text-align: left;
+    background-color: #fff;
+    padding: 10px;
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.data-item {
+    color: #222;
+    cursor: default;
+    margin: 10px 0 0 10px;
+    transition: transform 0.3s;
+}
+
+.data-item:hover {
+    transform: scale(1.1);
+}
+
+#fontawesome {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.negative {
+    color: #ff0011;
+}
+
+.positive {
+    color: #006400;
+}
+
+.link:visited,
+.link {
+    color: #4267b2;
+    text-decoration: none;
+}
+
+#map {
+    position: fixed;
+    top: 2%;
+    left: 21%;
+    width: 78%;
+    height: 58%;
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#barChart {
+    background-color: #fff;
+    width: 37% !important;
+    height: 32% !important;
+    padding: 10px;
+    position: fixed;
+    top: 63%;
+    left: 21%;
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#lineChart {
+    background-color: #fff;
+    width: 37% !important;
+    height: 32% !important;
+    padding: 10px;
+    position: fixed;
+    top: 63%;
+    left: 61%;
+    -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.guide {
+    color: #4267b2;
+    cursor: default;
+    font-weight: 400;
+    position: fixed;
+    top: 77%;
+    left: 71%;
+    z-index: 1;
+}
+
+.error {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 40px;
+}
+
+.errorTitle {
+    color: red;
+}
+
+.errorTitle,
+.errorMessage {
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 1680px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .search-input {
+        width: 250px;
+    }
+
+    .data-list {
+        font-size: 14px;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .title {
+        font-size: 26px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    .search-input {
+        width: 180px;
+    }
+
+    .input i {
+        left: -10px;
+        top: 50px;
+    }
+
+    .data-list {
+        font-size: 12px;
+        width: 75%;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .link:visited,
+    .link {
+        font-size: 12px;
+    }
+
+    .guide {
+        left: 66%;
+    }
+
+    #fontawesome {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .title {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    .search-input {
+        width: 130px;
+    }
+
+    .input i {
+        left: -10px;
+        top: 50px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    .data-list {
+        font-size: 10px;
+        width: 75%;
+    }
+
+    .link:visited,
+    .link {
+        font-size: 12px;
+    }
+
+    .guide {
+        font-size: 16px;
+    }
+
+    #fontawesome {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #map {
+        position: absolute;
+        top: 125%;
+        left: 4%;
+        width: 93%;
+        height: 58%;
+        -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .dashboard {
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .title {
+        font-size: 30px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .search-input {
+        margin: 30px auto;
+        width: 400px;
+        height: 40px;
+        display: block;
+    }
+
+    .input i {
+        left: 125px;
+        top: 58px;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    .btn {
+        padding: 1.5em 3em;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+
+    .data-list {
+        font-size: 20px;
+        margin: 50px 0 30px 30px;
+        width: 90%;
+    }
+
+    #barChart {
+        width: 87.5% !important;
+        height: 32% !important;
+        padding: 20px;
+        position: absolute;
+        top: 85%;
+        left: 4%;
+    }
+
+    #lineChart {
+        background-color: #fff;
+        width: 90.5% !important;
+        height: 32% !important;
+        padding: 10px;
+        position: absolute;
+        top: 187%;
+        left: 4%;
+        margin-bottom: 300px;
+    }
+
+    .link:visited,
+    .link {
+        font-size: 20px;
+    }
+
+    .guide {
+        font-size: 20px;
+        position: absolute;
+        top: 200%;
+        left: 25%;
+        z-index: 1;
+    }
+
+    #fontawesome {
+        font-size: 14px;
+    }
+
+    .footerOne {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 225%;
+        left: 30%;
+    }
+
+    .footerTwo {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 230%;
+        left: 28%;
+    }
+
+    .footerThree {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 235%;
+        left: 32%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #map {
+        position: absolute;
+        top: 130%;
+        left: 5%;
+        width: 93%;
+        height: 58%;
+        -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .dashboard {
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .title {
+        font-size: 30px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .search-input {
+        margin: 30px auto;
+        width: 400px;
+        height: 40px;
+        display: block;
+    }
+
+    .input i {
+        left: 60px;
+        top: 58px;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    .btn {
+        padding: 1.5em 3em;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+
+    .data-list {
+        font-size: 20px;
+        margin: 50px 0 30px 30px;
+        width: 90%;
+    }
+
+    #barChart {
+        width: 86.5% !important;
+        height: 32% !important;
+        padding: 20px;
+        position: absolute;
+        top: 90%;
+        left: 5%;
+    }
+
+    #lineChart {
+        background-color: #fff;
+        width: 90% !important;
+        height: 32% !important;
+        padding: 10px;
+        position: absolute;
+        top: 192%;
+        left: 5%;
+        margin-bottom: 300px;
+    }
+
+    .link:visited,
+    .link {
+        font-size: 20px;
+    }
+
+    .guide {
+        font-size: 20px;
+        position: absolute;
+        top: 205%;
+        left: 25%;
+        z-index: 1;
+    }
+
+    #fontawesome {
+        font-size: 14px;
+    }
+
+    .footerOne {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 230%;
+        left: 30%;
+    }
+
+    .footerTwo {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 235%;
+        left: 28%;
+    }
+
+    .footerThree {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 240%;
+        left: 32%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #map {
+        position: absolute;
+        top: 130%;
+        left: 2%;
+        width: 95%;
+        height: 58%;
+        -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .dashboard {
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .title {
+        font-size: 30px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .search-input {
+        margin: 30px auto;
+        width: 400px;
+        height: 40px;
+        display: block;
+    }
+
+    .input i {
+        left: 60px;
+        top: 58px;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    .btn {
+        padding: 1.5em 3em;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+
+    .data-list {
+        font-size: 18px;
+        margin: 50px 0 30px 10px;
+        width: 92%;
+    }
+
+    #barChart {
+        width: 88.5% !important;
+        height: 32% !important;
+        padding: 20px;
+        position: absolute;
+        top: 90%;
+        left: 2%;
+    }
+
+    #lineChart {
+        background-color: #fff;
+        width: 92% !important;
+        height: 32% !important;
+        padding: 10px;
+        position: absolute;
+        top: 192%;
+        left: 2%;
+        margin-bottom: 300px;
+    }
+
+    .link:visited,
+    .link {
+        font-size: 20px;
+    }
+
+    .guide {
+        font-size: 20px;
+        position: absolute;
+        top: 205%;
+        left: 20%;
+        z-index: 1;
+    }
+
+    #fontawesome {
+        font-size: 14px;
+    }
+
+    .footerOne {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 230%;
+        left: 27%;
+    }
+
+    .footerTwo {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 235%;
+        left: 25%;
+    }
+
+    .footerThree {
+        display: block;
+        font-size: 20px;
+        position: absolute;
+        top: 240%;
+        left: 30%;
+    }
+}
