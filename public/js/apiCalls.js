@@ -3,7 +3,7 @@ export const getAll = async () => {
     try {
         const response = await axios({
             method: 'GET',
-            url: 'http://localhost:3000/api/v1/data/',
+            url: 'https://findcovid.herokuapp.com/api/v1/data/',
             redirect: 'follow',
         });
 

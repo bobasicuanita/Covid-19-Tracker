@@ -23,7 +23,7 @@ mongoose
     })
     .then(() => {
         console.log('DB connection successful');
-        cron.schedule('44 * * * *', async () => {
+        cron.schedule('59 23 * * *', async () => {
             await Latest.deleteOne({});
             await cloneData.cloneData();
             await convertData.convertData();
