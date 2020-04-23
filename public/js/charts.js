@@ -1,29 +1,46 @@
 import {
-    getAllCountryData
+    getAll
 } from './apiCalls.js';
 
 const compareNumbers = (a, b) => {
     return b - a;
 };
 
-export const sortCases = async (type) => {
+export const sortCountriesByDeaths = (response, type) => {
     let countries = [];
     let numbers = [];
     let elements = [];
 
+    // console.log(response.data.data.countriesList);
 
-    const response = await getAllCountryData();
-    const sortedCases = response.data
-        .map((el) => el.cases)
+    const sortedDeaths = response.data.data.countriesList
+        .map((el) => el.deaths)
         .sort(compareNumbers)
         .slice(0, 10);
 
-    sortedCases.forEach((el) => {
-        elements = [...elements, response.data.find((element) => element.cases === el)];
+    sortedDeaths.forEach((el) => {
+        elements = [...elements, response.data.data.countriesList.find((element) => element.deaths === el)];
     });
 
 
     elements.forEach((el) => {
+        countries = [...countries, el.country];
+        numbers = [...numbers, el.deaths];
+    });
+
+    if (type === 'countries') {
+        return countries;
+    } else if (type === 'numbers') {
+        return numbers;
+    }
+};
+
+export const sortCountriesByCases = (response, type) => {
+    let countries = [];
+    let numbers = [];
+
+
+    response.data.data.countriesList.slice(0, 10).forEach(el => {
         countries = [...countries, el.country];
         numbers = [...numbers, el.cases];
     });
@@ -35,29 +52,7 @@ export const sortCases = async (type) => {
     }
 };
 
-export const configureLineData = async (response, type, responseClick) => {
-    let dates = [];
-    let data = [];
-
-    const historicalData = response.data.find(
-        (el) => el.country === responseClick.data.country
-    );
-
-    Object.entries(historicalData.timeline.cases).forEach((el) =>
-        dates = [...dates, el[1]]
-    );
-    Object.entries(historicalData.timeline.cases).forEach((el) =>
-        data = [...data, el[1]]
-    );
-
-    if (type === 'dates') {
-        return dates;
-    } else if (type === 'data') {
-        return data;
-    }
-}
-
-export const barOptions = (countries, numbers) => {
+export const casesOptions = (countries, numbers) => {
     return {
         type: 'bar',
         data: {
@@ -100,12 +95,12 @@ export const barOptions = (countries, numbers) => {
             scales: {
                 yAxes: [{
                     ticks: {
-                        fontSize: 40,
+                        fontSize: 20,
                     },
                 }, ],
                 xAxes: [{
                     ticks: {
-                        fontSize: 30,
+                        fontSize: 20,
                     },
                 }, ],
             },
@@ -125,21 +120,16 @@ export const barOptions = (countries, numbers) => {
     }
 }
 
-export const lineOptions = (dates, data, country) => {
+export const deathsOptions = (countries, numbers) => {
     return {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: dates,
+            labels: countries,
             datasets: [{
-                // label: `Historical Data of ${responseClick.data.country}`,
-                backgroundColor: 'rgba(66,103,178,0.2)',
-                borderColor: 'rgba(66,103,178,1)',
-                borderWidth: 10,
-                data,
-                pointStyle: 'circle',
-                pointRadius: 15,
-                pointHoverRadius: 15,
-                // fill: false,
+                label: 'Countries With Most Deaths',
+                backgroundColor: 'rgb(250, 62, 62)',
+                borderColor: 'rgb(27, 52, 54)',
+                data: numbers,
             }, ],
         },
 
@@ -165,7 +155,7 @@ export const lineOptions = (dates, data, country) => {
             },
             title: {
                 display: true,
-                text: `Historical Data of ${country}`,
+                text: 'Countries With Most Deaths',
                 fontFamily: "'Roboto', sans-serif",
                 fontSize: 50,
             },
@@ -173,12 +163,12 @@ export const lineOptions = (dates, data, country) => {
             scales: {
                 yAxes: [{
                     ticks: {
-                        fontSize: 40,
+                        fontSize: 20,
                     },
                 }, ],
                 xAxes: [{
                     ticks: {
-                        fontSize: 30,
+                        fontSize: 20,
                     },
                 }, ],
             },
@@ -190,10 +180,10 @@ export const lineOptions = (dates, data, country) => {
                 yPadding: 50,
                 callbacks: {
                     label: function (tooltipItem) {
-                        return Number(tooltipItem.yLabel) + ' cases';
+                        return Number(tooltipItem.yLabel) + ' deaths';
                     },
                 },
             },
-        },
+        }
     }
 }

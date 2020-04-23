@@ -2,8 +2,7 @@ import {
     markupNotification
 } from './markups.js';
 import {
-    btn,
-    area
+    btn
 } from './domElements.js';
 const alert = document.querySelector('.alert');
 
@@ -22,7 +21,6 @@ export const showAlert = (input) => {
     hideAlert();
 
     btn.innerText = 'Search';
-    area.insertAdjacentHTML('afterbegin', '<h3 class="guide">Click on the map to display a Country\'s Data</h3>');
 
     // display alert
     alert.insertAdjacentHTML('afterbegin', markupNotification(input));

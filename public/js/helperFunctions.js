@@ -12,6 +12,7 @@ import {
 } from './mapbox.js';
 
 const currentPopup = [];
+export const date = document.querySelector('.date');
 
 export const numberWithThousands = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -34,8 +35,6 @@ export const configureSearchCountry = (response) => {
             );
     }
 
-    const tranformedDate = new Date(response.data.updated).toGMTString();
-
     const geojson = {
         type: 'FeatureCollection',
         features: [{
@@ -43,13 +42,13 @@ export const configureSearchCountry = (response) => {
             geometry: {
                 type: 'Point',
                 coordinates: [
-                    response.data.countryInfo.long,
-                    response.data.countryInfo.lat,
+                    response.long,
+                    response.lat,
                 ],
             },
             properties: {
-                title: response.data.country,
-                totalCases: response.data.cases,
+                title: response.country,
+                totalCases: response.cases,
             },
         }, ],
     };
@@ -64,17 +63,11 @@ export const configureSearchCountry = (response) => {
             .setLngLat(marker.geometry.coordinates)
             .setHTML(
                 markupPopup(
-                    response.data.country,
-                    tranformedDate,
-                    response.data.cases,
-                    response.data.todayCases,
-                    response.data.deaths,
-                    response.data.todayDeaths,
-                    response.data.recovered,
-                    response.data.active,
-                    response.data.critical,
-                    response.data.tests,
-                    response.data.countryInfo.flag
+                    response.country,
+                    response.cases,
+                    response.deaths,
+                    response.recovered,
+                    response.flag
                 )
             )
             .addTo(map);
@@ -84,8 +77,8 @@ export const configureSearchCountry = (response) => {
 
     map.flyTo({
         center: [
-            response.data.countryInfo.long,
-            response.data.countryInfo.lat,
+            response.long,
+            response.lat,
         ],
         zoom: 2,
         speed: 0.5,
@@ -97,18 +90,18 @@ export const displayTotalData = async () => {
     // Fetch all country data
     const data = await getAll();
 
-    const tranformedDate = new Date(data.data.updated).toGMTString();
+    const day = new Date(data.data.data.date).getUTCDate();
+    const month = new Date(data.data.data.date).getUTCMonth();
+    const year = new Date(data.data.data.date).getUTCFullYear();
+    const tranformedDate = `${day} - ${month} - ${year}`
 
-    markups.push(tranformedDate);
-    markups.push(data.data.cases);
-    markups.push(data.data.todayCases);
-    markups.push(data.data.deaths);
-    markups.push(data.data.todayDeaths);
-    markups.push(data.data.recovered);
-    markups.push(data.data.active);
-    markups.push(data.data.critical);
-    markups.push(data.data.tests);
-    markups.push(data.data.affectedCountries);
+    markups.push(data.data.data.totalCases);
+    markups.push(data.data.data.todayCases);
+    markups.push(data.data.data.totalDeaths);
+    markups.push(data.data.data.todayDeaths);
+    markups.push(data.data.data.totalRecovered);
+    markups.push(data.data.data.totalActive);
+    markups.push(data.data.data.countriesList.length);
 
     Object.entries(dataElements).forEach((el) => {
         el[1].innerText = '';
@@ -116,6 +109,7 @@ export const displayTotalData = async () => {
 
     let index = 0;
 
+    date.innerText = tranformedDate;
     Object.entries(dataElements).forEach((el) => {
         el[1].insertAdjacentHTML(
             'afterbegin',

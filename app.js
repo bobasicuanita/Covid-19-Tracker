@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const router = express.Router();
+const dataRouter = require('./routes/dataRoutes.js');
 
 // Log req status and time
 app.use(morgan('dev'));
@@ -15,6 +16,8 @@ router.get('/', (req, res) => {
     res.status(200).sendFile('index.html');
 });
 
+app.use('/api/v1/data', dataRouter);
+
 app.all('*', (req, res) => {
     res.status(404).sendFile(__dirname + '/public/error.html', {
         title: 'Something went wrong!',
@@ -22,5 +25,4 @@ app.all('*', (req, res) => {
     });
 });
 
-// app.use(compression());
 module.exports = app;

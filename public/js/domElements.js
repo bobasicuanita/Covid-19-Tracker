@@ -1,5 +1,4 @@
 export const btn = document.querySelector('.btn');
 export const input = document.getElementById('search');
-export const ctxBar = document.getElementById('barChart').getContext('2d');
-export const ctxLine = document.getElementById('lineChart').getContext('2d');
-export const area = document.querySelector('.area');
+export const ctxBarCases = document.getElementById('casesChart').getContext('2d');
+export const ctxBarDeaths = document.getElementById('deathsChart').getContext('2d');

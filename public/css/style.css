@@ -150,7 +150,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-#barChart {
+#casesChart {
     background-color: #fff;
     width: 37% !important;
     height: 32% !important;
@@ -163,7 +163,7 @@ body {
     box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-#lineChart {
+#deathsChart {
     background-color: #fff;
     width: 37% !important;
     height: 32% !important;
@@ -176,14 +176,8 @@ body {
     box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.guide {
-    color: #4267b2;
-    cursor: default;
-    font-weight: 400;
-    position: fixed;
-    top: 77%;
-    left: 71%;
-    z-index: 1;
+.tooltip {
+    margin-right: 25px;
 }
 
 .error {
@@ -251,10 +245,6 @@ body {
         font-size: 12px;
     }
 
-    .guide {
-        left: 66%;
-    }
-
     #fontawesome {
         font-size: 16px;
     }
@@ -292,10 +282,6 @@ body {
         font-size: 12px;
     }
 
-    .guide {
-        font-size: 16px;
-    }
-
     #fontawesome {
         font-size: 14px;
     }
@@ -319,6 +305,7 @@ body {
         text-align: center;
         padding-top: 30px;
     }
+
     .title {
         font-size: 30px;
     }
@@ -365,7 +352,7 @@ body {
         left: 4%;
     }
 
-    #lineChart {
+    #deathsChart {
         background-color: #fff;
         width: 90.5% !important;
         height: 32% !important;
@@ -381,14 +368,6 @@ body {
         font-size: 20px;
     }
 
-    .guide {
-        font-size: 20px;
-        position: absolute;
-        top: 200%;
-        left: 25%;
-        z-index: 1;
-    }
-
     #fontawesome {
         font-size: 14px;
     }
@@ -399,14 +378,6 @@ body {
         position: absolute;
         top: 225%;
         left: 30%;
-    }
-
-    .footerTwo {
-        display: block;
-        font-size: 20px;
-        position: absolute;
-        top: 230%;
-        left: 28%;
     }
 
     .footerThree {
@@ -436,6 +407,7 @@ body {
         text-align: center;
         padding-top: 30px;
     }
+
     .title {
         font-size: 30px;
     }
@@ -482,7 +454,7 @@ body {
         left: 5%;
     }
 
-    #lineChart {
+    #deathsChart {
         background-color: #fff;
         width: 90% !important;
         height: 32% !important;
@@ -518,14 +490,6 @@ body {
         left: 30%;
     }
 
-    .footerTwo {
-        display: block;
-        font-size: 20px;
-        position: absolute;
-        top: 235%;
-        left: 28%;
-    }
-
     .footerThree {
         display: block;
         font-size: 20px;
@@ -553,6 +517,7 @@ body {
         text-align: center;
         padding-top: 30px;
     }
+
     .title {
         font-size: 30px;
     }
@@ -599,7 +564,7 @@ body {
         left: 2%;
     }
 
-    #lineChart {
+    #deathsChart {
         background-color: #fff;
         width: 92% !important;
         height: 32% !important;
@@ -633,14 +598,6 @@ body {
         position: absolute;
         top: 230%;
         left: 27%;
-    }
-
-    .footerTwo {
-        display: block;
-        font-size: 20px;
-        position: absolute;
-        top: 235%;
-        left: 25%;
     }
 
     .footerThree {
